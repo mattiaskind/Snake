@@ -18,16 +18,10 @@ namespace Snake
             GameWorld world = new GameWorld();
             ConsoleRenderer renderer = new ConsoleRenderer(world);
 
-            // Skulle vi kunna ha två variabler för höjd och bredd istället som vi skickar till GameWorld och varje GameObject?
-            // Så slipper varje GameObject ha tillgång till spelvärlden
-
-            // TODO Skapa spelare och andra objekt etc. genom korrekta anrop till vår GameWorld-instans
-            // ...
-
-            // Lägg till
-            Player player = new Player(10, 10, world, Direction.right);
+            // Skapar spelaren och lägger till till världen                    
+            Player player = new Player(world, Direction.right);
             world.AddGameObject(player);
-            
+
             // Huvudloopen
             bool running = true;
             while (running)

@@ -9,12 +9,7 @@ namespace Snake
     {
         public Direction Direction;
 
-        /*public Player(int x, int y, GameWorld world, Direction direction) : base(x, y, world)
-        {
-            Direction = direction;
-        }*/
-
-        public Player(int x, int y, GameWorld world, Direction direction) : base(x, y, world)
+        public Player(GameWorld world, Direction direction) : base(world)
         {
             Direction = direction;
         }

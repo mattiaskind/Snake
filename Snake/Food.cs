@@ -6,7 +6,7 @@ namespace Snake
 {
     internal class Food : GameObject
     {        
-        public Food(int x, int y, GameWorld world) : base(x, y, world)
+        public Food(GameWorld world) : base(world)
         { 
            
         }

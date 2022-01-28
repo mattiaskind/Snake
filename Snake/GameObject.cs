@@ -15,32 +15,27 @@ namespace Snake
 
     abstract class GameObject
     {
-        // TODO
         public Position Position;
         public char Appearance = '#';
         public GameWorld World;
-
-        // Hämta storlek på spelplan från GameWorld 
-        // Skapa lista för samtliga GameObject med positioner
-        // Skapa GameObject med slumpad startposition
-        // Lägg till GameObject i lista allt eftersom att de skapas -- OM positionen redan är tagen, ge ny position
-        
-
-        /*public GameObject(int x, int y, GameWorld world)
+ 
+        public GameObject(GameWorld world)
         {
-            // Slumpa position, utgå från bredd och höjd på spelplanen samt andra objekt, se ovan
-            Position = new Position(x, y);
+            // Slumpa position, utgå från bredd och höjd på spelplanen samt andra objekt, se ovan            
             World = world;
-        } */
-
-        public GameObject(int x, int y, GameWorld world)
-        {
-            // Slumpa position, utgå från bredd och höjd på spelplanen samt andra objekt, se ovan
-            Position = new Position(x, y);
-            World = world;
+            // Ge objektet en slumpvald position
+            Position = new Position(randomizeStartPosition(World.Width), randomizeStartPosition(World.Height)); // Lägg till hantering av redan upptagna positioner
+            
         }
 
         public abstract void Update();
+
+        // Slumpar fram ett tal mellan 0 och max+1, används för att bestämma positionen när nya objekt skapas
+        public int randomizeStartPosition(int max)
+        {
+            Random rnd = new Random();         
+            return rnd.Next(max+1);
+        }
 
         // Metod för att hantera ormen och spelplanens gränser
         public void CheckPosition()
