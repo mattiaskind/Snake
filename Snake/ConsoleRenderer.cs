@@ -28,5 +28,14 @@ namespace Snake
                 Console.Write(ob.Appearance);
             }
         }
+
+        public void RenderBlank()
+        {
+            foreach(var ob in world.GameObjects)
+            {
+                Console.SetCursorPosition(ob.Position.X, ob.Position.Y);
+                Console.Write(" ");
+            }
+        }
     }
 }

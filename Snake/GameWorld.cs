@@ -27,5 +27,11 @@ namespace Snake
                 ob.Update();                
             }
         }
+
+        // Skapar nytt GameObject genom att lägga till i listan
+        public void AddGameObject(GameObject gameObject)
+        {
+            GameObjects.Add(gameObject);
+        }
     }
 }

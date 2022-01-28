@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using System.Threading;
 
 namespace Snake
@@ -8,7 +9,7 @@ namespace Snake
         /// <summary>
         /// Checks Console to see if a keyboard key has been pressed, if so returns it, otherwise NoName.
         /// </summary>
-        static ConsoleKey ReadKeyIfExists() => Console.KeyAvailable ? Console.ReadKey(intercept: true).Key : ConsoleKey.NoName;
+        static ConsoleKey ReadKeyIfExists() => Console.KeyAvailable ? Console.ReadKey(intercept: true).Key : ConsoleKey.NoName;       
 
         static void Loop()
         {
@@ -17,13 +18,15 @@ namespace Snake
             GameWorld world = new GameWorld();
             ConsoleRenderer renderer = new ConsoleRenderer(world);
 
+            // Skulle vi kunna ha två variabler för höjd och bredd istället som vi skickar till GameWorld och varje GameObject?
+            // Så slipper varje GameObject ha tillgång till spelvärlden
+
             // TODO Skapa spelare och andra objekt etc. genom korrekta anrop till vår GameWorld-instans
             // ...
-            Player player1 = new Player(10, 10, Direction.right);
-            world.GameObjects.Add(player1);
 
-            /*Player player2 = new Player(15, 15, world, Direction.left);
-            world.GameObjects.Add(player2); */
+            // Lägg till
+            Player player = new Player(10, 10, world, Direction.right);
+            world.AddGameObject(player);
             
             // Huvudloopen
             bool running = true;
@@ -38,13 +41,27 @@ namespace Snake
                 {
                     case ConsoleKey.Q:
                         running = false;
-                        break;                  
+                        break;
 
-                        // TODO Lägg till logik för andra knapptryckningar
-                        // ...
-                }               
+                    case ConsoleKey.LeftArrow:
+                        player.SetDirection(Direction.left);
+                        break;
+
+                    case ConsoleKey.RightArrow:
+                        player.SetDirection(Direction.right);
+                        break;
+
+                    case ConsoleKey.UpArrow:
+                        player.SetDirection(Direction.up);
+                        break;
+
+                    case ConsoleKey.DownArrow:
+                        player.SetDirection(Direction.down);
+                        break;
+                }
 
                 // Uppdatera världen och rendera om
+                renderer.RenderBlank();
                 world.Update();
                 renderer.Render();
 
@@ -60,6 +77,8 @@ namespace Snake
 
         static void Main(string[] args)
         {
+            // Gömmer markören
+            Console.CursorVisible = false;
             // Vi kan ev. ha någon meny här, men annars börjar vi bara spelet direkt
             Loop();
         }
