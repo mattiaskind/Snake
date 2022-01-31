@@ -25,7 +25,7 @@ namespace Snake
             World = world;
             // Ge objektet en slumpvald position
             Position = new Position(randomizeStartPosition(World.Width), randomizeStartPosition(World.Height)); // Lägg till hantering av redan upptagna positioner
-            
+            // Lägg till hantering av poäng-rad.            
         }
 
         public abstract void Update();
@@ -34,7 +34,7 @@ namespace Snake
         public int randomizeStartPosition(int max)
         {
             Random rnd = new Random();         
-            return rnd.Next(max+1);
+            return rnd.Next(max);
         }
 
         // Metod för att hantera ormen och spelplanens gränser
