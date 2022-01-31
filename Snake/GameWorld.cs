@@ -24,7 +24,22 @@ namespace Snake
             // Uppdatera varje objekt
             foreach (var ob in GameObjects)
             {
-                ob.Update();                
+                ob.Update();
+                if (ob is Player)
+                {
+                    foreach(var ob2 in GameObjects)
+                    {
+                        if(ob2 is Food)
+                        {
+                            if(ob.Position.X == ob2.Position.X && ob.Position.Y == ob2.Position.Y)
+                            {
+                                Console.WriteLine("MAT");
+                            }
+                        }
+                    }                    
+                }
+                //ob.CheckDuplicatePosition();
+                              
             }
         }
 

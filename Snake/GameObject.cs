@@ -16,7 +16,7 @@ namespace Snake
     abstract class GameObject
     {
         public Position Position;
-        public char Appearance = '#';
+        public char Appearance; 
         public GameWorld World;
  
         public GameObject(GameWorld world)

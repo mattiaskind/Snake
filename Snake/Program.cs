@@ -20,7 +20,12 @@ namespace Snake
 
             // Skapar spelaren och lägger till till världen                    
             Player player = new Player(world, Direction.right);
+            Food food = new Food(world);
+
+            food.setPosition(0, 0); // för testning
+            
             world.AddGameObject(player);
+            world.AddGameObject(food);
 
             // Huvudloopen
             bool running = true;

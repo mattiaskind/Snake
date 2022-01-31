@@ -29,11 +29,13 @@ namespace Snake
         // Tar bort föregående position genom att skriva ut " " 
         public void RenderBlank()
         {
-            foreach(var ob in world.GameObjects)
-            {
-                Console.SetCursorPosition(ob.Position.X, ob.Position.Y);
-                Console.Write(" ");
-            }
+
+            foreach (var ob in world.GameObjects)
+                if (ob is Player)
+                {
+                    Console.SetCursorPosition(ob.Position.X, ob.Position.Y);
+                    Console.Write(" ");
+                }
         }
     }
 }
