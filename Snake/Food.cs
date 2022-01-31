@@ -28,3 +28,6 @@ namespace Snake
         }
     }
 }
+
+
+// Lägger till en kommentar här för att testa GIT
