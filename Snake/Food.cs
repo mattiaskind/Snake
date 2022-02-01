@@ -34,3 +34,4 @@ namespace Snake
 // En ny kommentar som jag försöker pusha upp till GIT
 
 // En till kommentar
+// Vi kör en till då
