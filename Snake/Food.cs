@@ -32,3 +32,5 @@ namespace Snake
 
 // Lägger till en kommentar här för att testa GIT
 // En ny kommentar som jag försöker pusha upp till GIT
+
+// En till kommentar
