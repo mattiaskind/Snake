@@ -18,8 +18,10 @@ namespace Snake
         {
             Position.X = x;
             Position.Y = y;
-        }
-        
+            /* int[] positions = randomizeStartPosition();
+            Position.X = positions[0];
+            Position.Y = positions[1]; */
+        }      
 
 
         public override void Update()
@@ -29,9 +31,3 @@ namespace Snake
     }
 }
 
-
-// Lägger till en kommentar här för att testa GIT
-// En ny kommentar som jag försöker pusha upp till GIT
-
-// En till kommentar
-// Vi kör en till då

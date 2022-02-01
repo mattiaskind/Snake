@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Diagnostics;
 
 namespace Snake
 {
@@ -24,17 +25,34 @@ namespace Snake
             // Slumpa position, utgå från bredd och höjd på spelplanen samt andra objekt, se ovan            
             World = world;
             // Ge objektet en slumpvald position
-            Position = new Position(randomizeStartPosition(World.Width), randomizeStartPosition(World.Height)); // Lägg till hantering av redan upptagna positioner
-            // Lägg till hantering av poäng-rad.            
+            //Position = new Position(randomizeStartPosition(World.Width, false), randomizeStartPosition(World.Height, true)); // Lägg till hantering av redan upptagna positioner
+
+            Position = new Position(randomizeStartPosition());                                                           
         }
 
         public abstract void Update();
 
-        // Slumpar fram ett tal mellan 0 och max+1, används för att bestämma positionen när nya objekt skapas
-        public int randomizeStartPosition(int max)
+        public int[] randomizeStartPosition()
         {
-            Random rnd = new Random();         
-            return rnd.Next(max);
+            int width = World.Width;
+            int height = World.Height;
+
+            Random rnd = new Random();
+
+            int x = rnd.Next(width);
+            int y = rnd.Next(1, height);  
+
+            foreach (var obj in World.GameObjects)
+            {
+                //Debug.WriteLine("Foreachar: " + obj + " "+ obj.Position.X + ", " + obj.Position.Y);
+                while (obj.Position.X == x && obj.Position.Y == y)
+                {
+                    //Debug.WriteLine("I while-loopen: "+ obj+" " +obj.Position.X + ", " + obj.Position.Y);
+                    x = rnd.Next(width);
+                    y = rnd.Next(1, height);   
+                }
+            }
+            return new [] { x, y };
         }
 
         // Metod för att hantera ormen och spelplanens gränser
@@ -44,17 +62,17 @@ namespace Snake
             {
                 Position.X = 0;
             }
-            else if (Position.Y > World.Height-1)
+            else if (Position.Y > World.Height)
             {
-                Position.Y = 0;
+                Position.Y = 1;
             }
             else if (Position.X < 0)
             {
                 Position.X = World.Width - 1;
             }
-            else if (Position.Y < 0)
+            else if (Position.Y < 1)
             {
-                Position.Y = World.Height - 1;
+                Position.Y = World.Height;
             }
         }
 

@@ -9,10 +9,10 @@ namespace Snake
         public int X;
         public int Y;
 
-        public Position(int x, int y)
+        public Position(int[] position)
         {
-            X = x;
-            Y = y;
+            X = position[0];
+            Y = position[1];
         }
     }
 }

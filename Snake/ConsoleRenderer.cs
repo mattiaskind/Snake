@@ -11,7 +11,7 @@ namespace Snake
         {
             // Renderar konsolen med satt storlek baserat på världen -- Lägg till extra rad för Score ?
             world = gameWorld;
-            Console.SetWindowSize(world.Width, world.Height);
+            Console.SetWindowSize(world.Width, world.Height+1);
         }
 
         public void Render()

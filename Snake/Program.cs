@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Text;
 using System.Threading;
+using System.Diagnostics;
+
 
 namespace Snake
 {
@@ -20,12 +22,27 @@ namespace Snake
 
             // Skapar spelaren och lägger till till världen                    
             Player player = new Player(world, Direction.right);
-            Food food = new Food(world);
-
-            food.setPosition(0, 0); // för testning
-            
             world.AddGameObject(player);
-            world.AddGameObject(food);
+
+
+            Food food1 = new Food(world);
+            world.AddGameObject(food1);
+
+            Food food2 = new Food(world);
+            world.AddGameObject(food2);
+
+            // Debugger stuff för testning
+            /*Debug.WriteLine("####### TEST ######");
+            foreach(var obj in world.GameObjects)
+            {
+                Debug.WriteLine(obj.Position.X+ ", "+obj.Position.Y);
+            }
+            Debug.WriteLine("####### TEST ######");*/
+
+            // Skriver ut rad med poäng i blå färg
+            Console.BackgroundColor = ConsoleColor.Blue;
+            Console.WriteLine(("POÄNG: "+ world.Score).PadRight(Console.WindowWidth));
+            Console.ResetColor();
 
             // Huvudloopen
             bool running = true;
@@ -34,7 +51,13 @@ namespace Snake
                 // Kom ihåg vad klockan var i början
                 DateTime before = DateTime.Now;
 
-                // Hantera knapptryckningar från användaren
+                // Uppdaterar poängvärdet
+                Console.SetCursorPosition(7, 0);
+                Console.BackgroundColor = ConsoleColor.Blue;
+                Console.Write(world.Score);
+                Console.ResetColor();
+
+                //Hantera knapptryckningar från användaren
                 ConsoleKey key = ReadKeyIfExists();
                 switch (key)
                 {

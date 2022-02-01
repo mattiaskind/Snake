@@ -8,38 +8,38 @@ namespace Snake
     {
         public int Width;
         public int Height;
-        int Score;
+        public int Score;
         public List<GameObject> GameObjects;
 
         public GameWorld()
         {
             // Måsta kunna dela Width / Height till GameObject / Player
-            Width = 50;
-            Height = 20;
+            Width = 50; // 50
+            Height = 20; // 20
             Score = 0;
             GameObjects = new List<GameObject>();
         }
         public void Update()
         {
             // Uppdatera varje objekt
-            foreach (var ob in GameObjects)
+            for (int i = 0; i < GameObjects.Count; i++)
             {
-                ob.Update();
-                if (ob is Player)
+                GameObjects[i].Update();
+                if (GameObjects[i] is Player)
                 {
-                    foreach(var ob2 in GameObjects)
+                    for(int j = 0; j < GameObjects.Count; j++)
                     {
-                        if(ob2 is Food)
+                        if(GameObjects[j] is Food)
                         {
-                            if(ob.Position.X == ob2.Position.X && ob.Position.Y == ob2.Position.Y)
+                            if(GameObjects[i].Position.X == GameObjects[j].Position.X && GameObjects[i].Position.Y == GameObjects[j].Position.Y)
                             {
-                                Console.WriteLine("MAT");
+                                Score++;
+                                GameObjects.Remove(GameObjects[j]);
+                                AddGameObject(new Food(this));                                
                             }
                         }
                     }                    
-                }
-                //ob.CheckDuplicatePosition();
-                              
+                }                              
             }
         }
 
