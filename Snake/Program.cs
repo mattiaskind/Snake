@@ -19,7 +19,7 @@ namespace Snake
             GameWorld world = new GameWorld();
             ConsoleRenderer renderer = new ConsoleRenderer(world);
 
-            /*
+            
             // Skapar spelaren och lägger till till världen                    
             Player player = new Player(world, Direction.right);
             world.AddGameObject(player);
@@ -29,9 +29,9 @@ namespace Snake
 
             Food food2 = new Food(world);
             world.AddGameObject(food2);
-            */
             
             
+            /*
             // Fyller kartan med mat i testsyfte
             Debug.WriteLine("####### TEST ######");
             for (int i = 0; i<1000; i++)
@@ -46,6 +46,7 @@ namespace Snake
                 Debug.WriteLine(obj.Position.X+ ", "+obj.Position.Y);
             }
             Debug.WriteLine("####### TEST ######"); 
+            */
 
             // Skriver ut rad med poäng i blå färg
             Console.BackgroundColor = ConsoleColor.Blue;
@@ -65,7 +66,7 @@ namespace Snake
                 Console.Write(world.Score);
                 Console.ResetColor();
 
-                /*
+                
                 //Hantera knapptryckningar från användaren
                 ConsoleKey key = ReadKeyIfExists();
                 switch (key)
@@ -90,7 +91,7 @@ namespace Snake
                         player.SetDirection(Direction.down);
                         break;
                 }
-                */
+                
 
                 // Uppdatera världen och rendera om
                 renderer.RenderBlank();
