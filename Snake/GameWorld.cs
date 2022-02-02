@@ -13,7 +13,6 @@ namespace Snake
 
         public GameWorld()
         {
-            // Måsta kunna dela Width / Height till GameObject / Player
             Width = 50; // 50
             Height = 20; // 20
             Score = 0;
@@ -31,6 +30,7 @@ namespace Snake
                     {
                         if(GameObjects[j] is Food)
                         {
+                            // När mat äts upp, generera ny mat och öka poängmängden
                             if(GameObjects[i].Position.X == GameObjects[j].Position.X && GameObjects[i].Position.Y == GameObjects[j].Position.Y)
                             {
                                 Score++;

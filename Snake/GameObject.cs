@@ -22,15 +22,22 @@ namespace Snake
  
         public GameObject(GameWorld world)
         {
-            // Slumpa position, utgå från bredd och höjd på spelplanen samt andra objekt, se ovan            
             World = world;
             // Ge objektet en slumpvald position
-            //Position = new Position(randomizeStartPosition(World.Width, false), randomizeStartPosition(World.Height, true)); // Lägg till hantering av redan upptagna positioner
-
             Position = new Position(randomizeStartPosition());                                                           
         }
 
         public abstract void Update();
+
+        private bool CheckIfPositionOccupied(int x, int y)
+        {
+            // Går igenom befintliga objekt och kontrollerar deras position
+            foreach (var gameObject in World.GameObjects)
+            {
+                if (gameObject.Position.X == x && gameObject.Position.Y == y) return true;
+            }
+            return false;
+        }
 
         public int[] randomizeStartPosition()
         {
@@ -40,20 +47,19 @@ namespace Snake
             Random rnd = new Random();
 
             int x = rnd.Next(width);
-            int y = rnd.Next(1, height);  
+            int y = rnd.Next(1, height+1);  
 
             foreach (var obj in World.GameObjects)
             {
-                //Debug.WriteLine("Foreachar: " + obj + " "+ obj.Position.X + ", " + obj.Position.Y);
-                while (obj.Position.X == x && obj.Position.Y == y)
+                while(CheckIfPositionOccupied(x, y))
                 {
-                    //Debug.WriteLine("I while-loopen: "+ obj+" " +obj.Position.X + ", " + obj.Position.Y);
                     x = rnd.Next(width);
-                    y = rnd.Next(1, height);   
+                    y = rnd.Next(1, height+1);   
                 }
             }
             return new [] { x, y };
         }
+
 
         // Metod för att hantera ormen och spelplanens gränser
         public void CheckPosition()

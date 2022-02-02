@@ -12,7 +12,7 @@ namespace Snake
         public Player(GameWorld world, Direction direction) : base(world)
         {
             Direction = direction;
-            Appearance = 'O';
+            Appearance = 'O'; // Göra ormen lite längre?
         }
 
         public void SetDirection(Direction direction)

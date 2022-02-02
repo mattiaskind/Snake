@@ -3,7 +3,6 @@ using System.Text;
 using System.Threading;
 using System.Diagnostics;
 
-
 namespace Snake
 {
     class Program
@@ -20,24 +19,33 @@ namespace Snake
             GameWorld world = new GameWorld();
             ConsoleRenderer renderer = new ConsoleRenderer(world);
 
+            /*
             // Skapar spelaren och lägger till till världen                    
             Player player = new Player(world, Direction.right);
             world.AddGameObject(player);
-
 
             Food food1 = new Food(world);
             world.AddGameObject(food1);
 
             Food food2 = new Food(world);
             world.AddGameObject(food2);
-
+            */
+            
+            
+            // Fyller kartan med mat i testsyfte
+            Debug.WriteLine("####### TEST ######");
+            for (int i = 0; i<1000; i++)
+            {
+                Debug.WriteLine("Skapar Food nr "+i);
+                world.AddGameObject(new Food(world));
+            }
+                
             // Debugger stuff för testning
-            /*Debug.WriteLine("####### TEST ######");
-            foreach(var obj in world.GameObjects)
+            foreach (var obj in world.GameObjects)
             {
                 Debug.WriteLine(obj.Position.X+ ", "+obj.Position.Y);
             }
-            Debug.WriteLine("####### TEST ######");*/
+            Debug.WriteLine("####### TEST ######"); 
 
             // Skriver ut rad med poäng i blå färg
             Console.BackgroundColor = ConsoleColor.Blue;
@@ -57,6 +65,7 @@ namespace Snake
                 Console.Write(world.Score);
                 Console.ResetColor();
 
+                /*
                 //Hantera knapptryckningar från användaren
                 ConsoleKey key = ReadKeyIfExists();
                 switch (key)
@@ -81,6 +90,7 @@ namespace Snake
                         player.SetDirection(Direction.down);
                         break;
                 }
+                */
 
                 // Uppdatera världen och rendera om
                 renderer.RenderBlank();

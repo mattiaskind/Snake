@@ -9,16 +9,14 @@ namespace Snake
         private GameWorld world;
         public ConsoleRenderer(GameWorld gameWorld)
         {
-            // Renderar konsolen med satt storlek baserat på världen -- Lägg till extra rad för Score ?
+            // Renderar konsolen med satt storlek baserat på världen
             world = gameWorld;
-            Console.SetWindowSize(world.Width, world.Height+1);
+            Console.SetWindowSize(world.Width, (world.Height+1)); // +1 på world.Height lägger till en rad i botten, inte toppen
         }
 
         public void Render()
         {
-            // TODO Poängräkningen
-
-            // Renderar GameObjects -- saknar Score
+            // Renderar GameObjects
             foreach(var ob in world.GameObjects)
             {
                 Console.SetCursorPosition(ob.Position.X, ob.Position.Y);
