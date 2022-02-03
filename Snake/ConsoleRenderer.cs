@@ -36,7 +36,7 @@ namespace Snake
                         Console.Write(ob.Appearance);
                         
                         // För testning
-                        Debug.WriteLine("Length: "+player.Body.Count+ " @ "+    position.X + ", " + +position.Y);
+                        //Debug.WriteLine("Length: "+player.Body.Count+ " @ "+    position.X + ", " + +position.Y);
                     }
                 }   
                 else
@@ -57,11 +57,15 @@ namespace Snake
                     Player player = ob as Player;
                     if (player.Body.Count < 3)
                     {
+                        /*Debug.WriteLine("Removing at "+player.Body.Count+": " + player.Body[0].X + ", " + player.Body[0].Y);
                         Console.SetCursorPosition(player.Body[0].X, player.Body[0].Y);
+                        Debug.WriteLine("Snake is smol");*/
                     }
                     else
                     {
-                        Console.SetCursorPosition(player.Body[player.Body.Count - 1].X, player.Body[player.Body.Count - 1].Y);
+                        Debug.WriteLine("Removing: "+ player.Body[player.Body.Count - 1].X +", "+ player.Body[player.Body.Count - 1].Y);
+                        Console.SetCursorPosition(player.Body[player.Body.Count-1].X, player.Body[player.Body.Count-1].Y);
+                        
                     }
                     
                     Console.Write(" ");
