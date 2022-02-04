@@ -24,6 +24,7 @@ namespace Snake
             for (int i = 0; i < GameObjects.Count; i++)
             {
                 GameObjects[i].Update();
+                // Om GameObject är spelare, kontrollera om spelaren kolliderat med en matbit
                 if (GameObjects[i] is Player)
                 {
                     for(int j = 0; j < GameObjects.Count; j++)
@@ -39,7 +40,33 @@ namespace Snake
                             }
                         }
                     }                    
-                }                              
+                }
+                // Om GameObject är en fiende, kontrollera om fienden kolliderat med spelaren
+                if (GameObjects[i] is Enemy)
+                {
+                    for(int j = 0; j < GameObjects.Count;j++)
+                    {
+                        if(GameObjects[j] is Player)
+                        {
+                            Player player = GameObjects[j] as Player;                         
+                            // Gå igenom alla delar av ormen och kontrollera om fienden har kolliderat med någon del
+                            foreach(var position in player.Body)
+                            {
+                                // När fienden träffar ormen, minska poängen, ta bort och lägga till ny fiende
+                                if (GameObjects[i].Position.X == position.X && GameObjects[i].Position.Y == position.Y)
+                                {
+                                    Score = Score - 5;
+                                    GameObjects.Remove(GameObjects[i]);
+                                    AddGameObject(new Enemy(this, GameObjects[j].Position));
+                                }
+
+                            }
+                        }
+                        /*else if (GameObjects[j] is Food) 
+                        {
+                        }*/
+                    }                  
+                }
             }
         }
 

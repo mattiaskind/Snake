@@ -14,5 +14,6 @@ namespace Snake
             X = position[0];
             Y = position[1];
         }
+        
     }
 }
