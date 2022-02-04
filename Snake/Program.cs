@@ -7,9 +7,7 @@ namespace Snake
 {
     class Program
     {
-        /// <summary>
-        /// Checks Console to see if a keyboard key has been pressed, if so returns it, otherwise NoName.
-        /// </summary>
+        // Test test
         static ConsoleKey ReadKeyIfExists() => Console.KeyAvailable ? Console.ReadKey(intercept: true).Key : ConsoleKey.NoName;       
 
         static void Loop()
