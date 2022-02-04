@@ -4,6 +4,10 @@ using System.Text;
 
 namespace Snake
 {
+    /// <summary>
+/// I den här class har vi variabler width, height, score och list från class Gameobject som skulle visa appearence och 
+/// positionen och kontrollera de. 
+/// </summary>
     class GameWorld
     {
         public int Width;
@@ -18,9 +22,10 @@ namespace Snake
             Score = 0;
             GameObjects = new List<GameObject>();
         }
+        
         public void Update()
         {
-            // Uppdatera varje objekt
+           
             for (int i = 0; i < GameObjects.Count; i++)
             {
                 GameObjects[i].Update();
@@ -36,7 +41,8 @@ namespace Snake
                             {
                                 Score++;
                                 GameObjects.Remove(GameObjects[j]);
-                                AddGameObject(new Food(this));                                
+                                AddGameObject(new Food(this));  
+                                
                             }
                         }
                     }                    
