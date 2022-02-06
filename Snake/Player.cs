@@ -15,7 +15,7 @@ namespace Snake
         public Player(GameWorld world, Direction direction) : base(world)
         {
             Direction = direction;
-            Appearance = 'O';
+            Appearance = '0'; 
             Body.Add(Position);            
         }
 

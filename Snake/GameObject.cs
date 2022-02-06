@@ -6,6 +6,7 @@ using System.Diagnostics;
 
 namespace Snake
 {
+    //den här variable håller reda på spelarens riktning
     public enum Direction
     {
         up,
@@ -19,7 +20,7 @@ namespace Snake
         public Position Position;
         public char Appearance; 
         public GameWorld World;
- 
+            // här vi skapar en könstrktör som har en objekt world från klass GameWorld
         public GameObject(GameWorld world)
         {
             World = world;
@@ -38,7 +39,8 @@ namespace Snake
             }
             return false;
         }
-
+        // i den här function väljer vi slumpmässig start punkt enligt width och hight.
+  
         public int[] randomizeStartPosition()
         {
             int width = World.Width;
@@ -46,8 +48,8 @@ namespace Snake
 
             Random rnd = new Random();
 
-            int x = rnd.Next(width);
-            int y = rnd.Next(1, height+1);  
+            int x = rnd.Next(width); // räknar nästa rnd position från 0 till max bredd
+            int y = rnd.Next(1, height+1);  // räknar nästa rnd position från 1 till max höjd+1
 
             foreach (var obj in World.GameObjects)
             {
@@ -61,16 +63,16 @@ namespace Snake
         }
 
 
-        // Metod för att hantera ormen och spelplanens gränser
+        // Metod för att hantera ormen och spelplanens gränser, om ormen inträffar gärnsen från ena sidan, förtsätter den på sidan mitt emot med samma riktning
         public void CheckPosition()
         {
-            if (Position.X > World.Width-1)
+            if (Position.X > World.Width-1) 
             {
                 Position.X = 0;
             }
             else if (Position.Y > World.Height)
             {
-                Position.Y = 1;
+                Position.Y = 1; // ormen börjam från position y = 1 eftersom position 0 är poäng rad
             }
             else if (Position.X < 0)
             {

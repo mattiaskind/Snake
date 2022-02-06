@@ -22,14 +22,17 @@ namespace Snake
             Score = 0;
             GameObjects = new List<GameObject>();
         }
-        
+         /// <summary>
+/// i den här funktion, när player och food möter i samma punkt antal poäng ökar en, och den tar bort det objekt food 
+///  och skapa nytt objekt istället i ny slumpmässig punkt och lägga den i listan
+/// </summary>
         public void Update()
         {
            
             for (int i = 0; i < GameObjects.Count; i++)
             {
                 GameObjects[i].Update();
-                // Om GameObject är spelare, kontrollera om spelaren kolliderat med en matbit
+                // Om GameObject är spelare, kontrollera om spelaren kolliderat med en matbit 
                 if (GameObjects[i] is Player)
                 {
                     for(int j = 0; j < GameObjects.Count; j++)
