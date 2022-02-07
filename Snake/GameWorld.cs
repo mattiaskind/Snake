@@ -44,8 +44,7 @@ namespace Snake
                             {
                                 Score++;
                                 GameObjects.Remove(GameObjects[j]);
-                                AddGameObject(new Food(this));  
-                                
+                                AddGameObject(new Food(this));                                  
                             }
                         }
                     }                    

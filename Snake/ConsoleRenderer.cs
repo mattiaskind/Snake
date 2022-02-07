@@ -34,18 +34,21 @@ namespace Snake
             Console.Write(world.Score);
             Console.ResetColor();
 
+            // Går igenom alla GameObjects
             foreach (var ob in world.GameObjects)
             {
+                // Om objektet är spelaren ska mer än 1 position skrivas ut
                 if (ob is Player)
-                {
+                {                    
                     Player player = ob as Player;
-
+                    // Gå igenom listan med alla ormens delar och skriv ut respektive position
                     foreach (var position in player.Body)
                     {
                         Console.SetCursorPosition(position.X, position.Y);                        
                         Console.Write(ob.Appearance);
                     }
                 }   
+                // Om objektet inte är spelaren ska endast en position skrivas ut
                 else
                 {
                     Console.SetCursorPosition(ob.Position.X, ob.Position.Y);
@@ -60,7 +63,9 @@ namespace Snake
         public void RenderBlank()
         {
             foreach (var ob in world.GameObjects)
-            {                
+            {
+                // Om objektet är spelaren och ormens kropp består av minst tre delar ska den
+                // sista positionen rensas
                 if (ob is Player)
                 {
                     Player player = ob as Player;
@@ -69,7 +74,9 @@ namespace Snake
                         Console.SetCursorPosition(player.Body[player.Body.Count - 1].X, player.Body[player.Body.Count - 1].Y);
                         Console.Write(" ");
                     }
-                } else
+                } 
+                // För alla andra objekt rensas den senaste positionen
+                else
                 {
                     Console.SetCursorPosition(ob.Position.X, ob.Position.Y);
                     Console.Write(" ");

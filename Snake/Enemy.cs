@@ -30,11 +30,12 @@ namespace Snake
         /// </summary>
         public override void Update()
         {
-            
+            // Räknar ut skillanden i x- och y-led till spelaren
             int X = PlayerPosition.X - Position.X;
             int Y = PlayerPosition.Y - Position.Y;
 
             // Använder System.Math.Abs för att jämföra siffervärdet, oavsett om det är +/-
+            // Uppdaterar sedan positionen baserat på olika utfall
             if(System.Math.Abs(X) > System.Math.Abs(Y))
             {
                 if (X > 0) Position.X++; // HÖGER
