@@ -23,9 +23,9 @@ namespace Snake
             GameObjects = new List<GameObject>();
         }
          /// <summary>
-/// i den här funktion, när player och food möter i samma punkt antal poäng ökar en, och den tar bort det objekt food 
-///  och skapa nytt objekt istället i ny slumpmässig punkt och lägga den i listan
-/// </summary>
+        /// i den här funktion, när player och food möter i samma punkt antal poäng ökar en, och den tar bort det objekt food 
+        ///  och skapa nytt objekt istället i ny slumpmässig punkt och lägga den i listan
+        /// </summary>
         public void Update()
         {
            

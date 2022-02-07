@@ -21,16 +21,22 @@ namespace Snake
             Player player = new Player(world, Direction.right);
             world.AddGameObject(player);
 
-            // Skapar en fiende och lägger till till världen
-            Enemy enemy = new Enemy(world, player.Position);
-            world.AddGameObject(enemy);
+            // Skapar en fiende och lägger till till världen            
+            world.AddGameObject(new Enemy(world, player.Position));
+            // Skapar två matbitar och lägger till världen            
+            world.AddGameObject(new Food(world));
+            world.AddGameObject(new Food(world));            
 
-            // Skapar två matbitar och lägger till världen
-            Food food1 = new Food(world);
-            world.AddGameObject(food1);
+            //// Skapar en fiende och lägger till till världen
+            //Enemy enemy = new Enemy(world, player.Position);
+            //world.AddGameObject(enemy);
 
-            Food food2 = new Food(world);
-            world.AddGameObject(food2);          
+            //// Skapar två matbitar och lägger till världen
+            //Food food1 = new Food(world);
+            //world.AddGameObject(food1);
+
+            //Food food2 = new Food(world);
+            //world.AddGameObject(food2);          
             
             /*
             // Fyller kartan med mat i testsyfte
@@ -60,12 +66,6 @@ namespace Snake
             {
                 // Kom ihåg vad klockan var i början
                 DateTime before = DateTime.Now;
-
-                // Uppdaterar poängvärdet
-                Console.SetCursorPosition(7, 0);
-                Console.BackgroundColor = ConsoleColor.Blue;
-                Console.Write(world.Score);
-                Console.ResetColor();
                 
                 //Hantera knapptryckningar från användaren
                 ConsoleKey key = ReadKeyIfExists();

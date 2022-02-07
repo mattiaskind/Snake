@@ -17,15 +17,24 @@ namespace Snake
         {
             // Renderar konsolen med satt storlek baserat på världen
             world = gameWorld;
-            Console.SetWindowSize(world.Width, (world.Height+1));
+            Console.SetWindowSize(world.Width, (world.Height+1)); 
         }
         /// <summary>
         /// Publik metod som renderar de olika spelobjekten
         /// </summary>
         public void Render()
-        {
-            
-            foreach(var ob in world.GameObjects)
+        {            
+            // Uppdaterar poängvärdet
+            Console.SetCursorPosition(7, 0);
+            Console.BackgroundColor = ConsoleColor.Blue;
+            // Rensar poäng från föregående rendering
+            Console.Write("    ");
+            // Skriver ut aktuell poängställning
+            Console.SetCursorPosition(7, 0);
+            Console.Write(world.Score);
+            Console.ResetColor();
+
+            foreach (var ob in world.GameObjects)
             {
                 if (ob is Player)
                 {

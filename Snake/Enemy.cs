@@ -19,8 +19,7 @@ namespace Snake
         }
         /// <summary>
         /// Bestämmer position genom x och y värde
-        /// </summary>
-        
+        /// </summary>        
         public void setPosition(int x, int y)
         {
             Position.X = x;
