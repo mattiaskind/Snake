@@ -6,6 +6,10 @@ using System.Diagnostics;
 
 namespace Snake
 {
+    /// <summary>
+    /// Klassen Player är ett Spelobjekt, tillika ormen i spelet.
+    /// Player innehåller spelarens kropp och riktning och som 
+    /// dessutom läggs till i en lista vid namn Body.
     internal class Player : GameObject
     {
         int i = 0;
@@ -18,8 +22,11 @@ namespace Snake
             Appearance = '0'; 
             Body.Add(Position);            
         }
-
-        public void UpdateBody() // Fungerar just nu för en orm med längd på 3
+        /// <summary>
+        /// Uppdaterar och adderar ormens kropp till ett maximalt värde av 3,
+        /// samt dess position genom x och y värden
+        /// </summary>
+        public void UpdateBody() 
         {
             if (Body.Count == 1)
             {
@@ -39,12 +46,18 @@ namespace Snake
                 Body[1].Y = Body[0].Y; 
             }
         }
-
+        /// <summary>
+        /// Sätter vilken riktning ormen har
+        /// </summary>
         public void SetDirection(Direction direction)
         {
             Direction = direction;
         }
 
+        /// <summary>
+        /// Uppdaterar ormens kropp samt uppdaterar vilken position den
+        /// har genom x och y värden
+        /// </summary>
         public override void Update()
         {
             UpdateBody();
