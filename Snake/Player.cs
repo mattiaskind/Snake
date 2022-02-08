@@ -12,7 +12,7 @@ namespace Snake
     /// dessutom läggs till i en lista vid namn Body.
     internal class Player : GameObject
     {
-        int i = 0;
+        //int i = 0;
         public Direction Direction;
         public List<Position> Body = new List<Position>();
 
@@ -35,8 +35,8 @@ namespace Snake
             else if (Body.Count == 2)
             {
                 Body.Add(new Position(new int[] { Body[1].X, Body[1].Y }));
-                Body[1].X = Body[0].X;
-                Body[1].Y = Body[0].Y;
+                Body[1].X = Body[0].X; 
+                Body[1].Y = Body[0].Y; 
             }
             else if (Body.Count == 3)  
             {

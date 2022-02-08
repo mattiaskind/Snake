@@ -27,7 +27,6 @@ namespace Snake
             // Ge objektet en slumpvald position
             Position = new Position(randomizeStartPosition());                                                           
         }
-
         public abstract void Update();
 
         private bool CheckIfPositionOccupied(int x, int y)
@@ -39,15 +38,14 @@ namespace Snake
             }
             return false;
         }
-        // i den här function väljer vi slumpmässig start punkt enligt width och hight.
-  
+        
+        // i den här function väljer vi slumpmässig start punkt enligt width och hight.  
         public int[] randomizeStartPosition()
         {
             int width = World.Width;
             int height = World.Height;
 
             Random rnd = new Random();
-
             int x = rnd.Next(width); // räknar nästa rnd position från 0 till max bredd
             int y = rnd.Next(1, height+1);  // räknar nästa rnd position från 1 till max höjd+1
 
@@ -61,7 +59,6 @@ namespace Snake
             }
             return new [] { x, y };
         }
-
 
         // Metod för att hantera ormen och spelplanens gränser, om ormen inträffar gärnsen från ena sidan, förtsätter den på sidan mitt emot med samma riktning
         public void CheckPosition()
