@@ -9,6 +9,7 @@ namespace Snake
         public int X;
         public int Y;
 
+        // Konstruktorn skapar ett positions-objekt med X- och Y-positioner
         public Position(int[] position)
         {
             X = position[0];

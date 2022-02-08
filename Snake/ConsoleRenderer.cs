@@ -12,10 +12,9 @@ namespace Snake
     class ConsoleRenderer
     {
         private GameWorld world;
-        //private Player player;
         public ConsoleRenderer(GameWorld gameWorld)
         {
-            // Renderar konsolen med satt storlek baserat på världen
+            // Renderar konsolen med satt storlek baserat på världen, +1 för att få plats med poäng-raden
             world = gameWorld;
             Console.SetWindowSize(world.Width, (world.Height+1)); 
         }
@@ -64,8 +63,7 @@ namespace Snake
         {
             foreach (var ob in world.GameObjects)
             {
-                // Om objektet är spelaren och ormens kropp består av minst tre delar ska den
-                // sista positionen rensas
+                // När ormen har växt till 3 delar i spelets start, så rensas den sista positionen
                 if (ob is Player)
                 {
                     Player player = ob as Player;

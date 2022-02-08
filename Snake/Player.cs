@@ -10,10 +10,10 @@ namespace Snake
     /// Klassen Player är ett Spelobjekt, tillika ormen i spelet.
     /// Player innehåller spelarens kropp och riktning och som 
     /// dessutom läggs till i en lista vid namn Body.
+    /// </summary>
     internal class Player : GameObject
     {
-        //int i = 0;
-        public Direction Direction;
+        private Direction Direction;
         public List<Position> Body = new List<Position>();
 
         public Player(GameWorld world, Direction direction) : base(world)
@@ -28,6 +28,7 @@ namespace Snake
         /// </summary>
         public void UpdateBody() 
         {
+            // I spelets början adderas kroppsdelar tills ormen är == 3 i längd
             if (Body.Count == 1)
             {
                 Body.Add(new Position(new int[] { Body[0].X, Body[0].Y }));
@@ -38,6 +39,7 @@ namespace Snake
                 Body[1].X = Body[0].X; 
                 Body[1].Y = Body[0].Y; 
             }
+            // När ormen är == 3 i längd ändras endast positioner i listan
             else if (Body.Count == 3)  
             {
                 Body[2].X = Body[1].X;

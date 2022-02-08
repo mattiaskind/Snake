@@ -5,9 +5,15 @@ using System.Diagnostics;
 
 namespace Snake
 {
+    /* Vi har byggt ett Snake-spel där ormen växer till tre tecken. Två matbitar
+     * slumpas fram på spelplanen och när ormen äter upp en matbit ger det en poäng. 
+     * En ny matbit slumpas också fram. Vi har även implementerat ett "spöke" som jagar ormens huvud,
+     * men kan kollidera med hela ormens kropp.
+     * Vid kollision med spöket minskar antalet poäng med 5 och spöket flyttas till en ny position. 
+     */
+
     class Program
     {
-        // Test test
         static ConsoleKey ReadKeyIfExists() => Console.KeyAvailable ? Console.ReadKey(intercept: true).Key : ConsoleKey.NoName;       
 
         static void Loop()
@@ -26,34 +32,6 @@ namespace Snake
             // Skapar två matbitar och lägger till världen            
             world.AddGameObject(new Food(world));
             world.AddGameObject(new Food(world));            
-
-            //// Skapar en fiende och lägger till till världen
-            //Enemy enemy = new Enemy(world, player.Position);
-            //world.AddGameObject(enemy);
-
-            //// Skapar två matbitar och lägger till världen
-            //Food food1 = new Food(world);
-            //world.AddGameObject(food1);
-
-            //Food food2 = new Food(world);
-            //world.AddGameObject(food2);          
-            
-            /*
-            // Fyller kartan med mat i testsyfte
-            Debug.WriteLine("####### TEST ######");
-            for (int i = 0; i<1000; i++)
-            {
-                Debug.WriteLine("Skapar Food nr "+i);
-                world.AddGameObject(new Food(world));
-            }
-                
-            // Debugger stuff för testning
-            foreach (var obj in world.GameObjects)
-            {
-                Debug.WriteLine(obj.Position.X+ ", "+obj.Position.Y);
-            }
-            Debug.WriteLine("####### TEST ######"); 
-            */
 
             // Skriver ut rad med poäng i blå färg
             Console.BackgroundColor = ConsoleColor.Blue;

@@ -14,15 +14,9 @@ namespace Snake
             Appearance = 'ó';
         }
         /// <summary>
-        /// Metoden setPosition bestämmer matens position genom x och y värde
+        /// Metoden Update() behövs iom arv, men själva funktionen för vad som sker
+        /// när maten äts upp hanteras i GameWorld.cs
         /// </summary>
-        public void setPosition(int x, int y)
-        {
-            Position.X = x;
-            Position.Y = y;
-        }      
-
-
         public override void Update()
         {
             

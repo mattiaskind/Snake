@@ -7,6 +7,7 @@ namespace Snake
 {
     /// <summary>
     /// Klassen Enemy ärver från GameObject och förhåller sig till spelarens position
+    /// Enemy jagar ständigt ormens huvud
     /// </summary>
     internal class Enemy : GameObject
     {
@@ -14,6 +15,7 @@ namespace Snake
 
         public Enemy(GameWorld world, Position playerPosition) : base(world)
         {
+            // Fienden får ett "spöklikt" utseende i formen av ett 'A'
             Appearance = 'A';
             PlayerPosition = playerPosition;
         }
@@ -26,7 +28,7 @@ namespace Snake
             Position.Y = y;
         }
         /// <summary>
-        /// Kontrollerar var fienden är i förhållande till spelaren
+        /// Kontrollerar var fienden är i förhållande till spelarens huvud
         /// </summary>
         public override void Update()
         {
@@ -48,7 +50,7 @@ namespace Snake
             }
             else if (System.Math.Abs(Y) == System.Math.Abs(X))
             {
-                // Slumpar fram random nummer
+                // Slumpar fram random nummer för att slumpa riktning om det är lika avstånd i olika led
                 Random random = new Random();
                 int randomNumber = random.Next(1);
                 if (randomNumber == 0)
