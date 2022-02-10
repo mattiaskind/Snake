@@ -21,7 +21,7 @@ namespace Snake
 
         public override void Update()
         {
-            // get map from Maps.cs
+            // get mapList from maps.cs
             // Rita ut map
         }
     }
