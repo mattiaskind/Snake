@@ -15,6 +15,11 @@ namespace Snake
             X = position[0];
             Y = position[1];
         }
-        
+
+        public static Position operator +(Position a, Position b) => new Position(new int[] { a.X + b.X, a.Y + b.Y });
+        public static Position operator -(Position a, Position b) => new Position(new int[] { a.X - b.X, a.Y - b.Y });
+
     }
 }
+
+

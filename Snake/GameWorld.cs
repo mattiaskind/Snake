@@ -32,11 +32,31 @@ namespace Snake
             for (int i = 0; i < GameObjects.Count; i++)
             {
                 GameObjects[i].Update();
+
                 // Om GameObject är spelare, kontrollera om spelaren kolliderat med en matbit 
                 if (GameObjects[i] is Player)
                 {
                     for(int j = 0; j < GameObjects.Count; j++)
                     {
+                        if (GameObjects[j] is Wall)
+                        {
+                            // Krock med vägg
+                            if (GameObjects[i].Position.X == GameObjects[j].Position.X && GameObjects[i].Position.Y == GameObjects[j].Position.Y)
+                            {
+                                // Hantera ny position
+                                Player player = GameObjects[i] as Player;
+                                var previousPosition = player.Body[0] - player.Body[1];
+
+                                // För spelarens skull måste man ta Direction med här och sätta en ny efter att ha flyttat
+                                // Annars så behålls Direction från innan kollision
+
+
+                            }
+                                
+                            
+
+                        }
+
                         if(GameObjects[j] is Food)
                         {
                             // När mat äts upp, generera ny mat och öka poängmängden
@@ -54,7 +74,12 @@ namespace Snake
                 {
                     for(int j = 0; j < GameObjects.Count;j++)
                     {
-                        if(GameObjects[j] is Player)
+                        if (GameObjects[j] is Wall)
+                        {
+                            // Hantera ny position
+                        }
+
+                        if (GameObjects[j] is Player)
                         {
                             Player player = GameObjects[j] as Player;                         
                             // Gå igenom alla delar av ormen och kontrollera om objektet har kolliderat med någon del
@@ -79,5 +104,28 @@ namespace Snake
         {
             GameObjects.Add(gameObject);
         }
+
+        // Metod för att hantera vad som händer efter kollision med vägg
+        /*
+        public int[] randomizeNextPosition()
+        {
+            int width = Width;
+            int height = Height;
+
+            Random rnd = new Random();
+            int x = rnd.Next(width); // räknar nästa rnd position från 0 till max bredd
+            int y = rnd.Next(1, height + 1);  // räknar nästa rnd position från 1 till max höjd+1
+
+            foreach (var obj in GameObjects)
+            {
+                while (CheckIfPositionOccupied(x, y))
+                {
+                    x = rnd.Next(width);
+                    y = rnd.Next(1, height + 1);
+                }
+            }
+            return new[] { x, y };
+        }
+        */
     }
 }
