@@ -27,6 +27,13 @@ namespace Snake
             // Ge objektet en slumpvald position
             Position = new Position(randomizeStartPosition());                                                           
         }
+
+        public GameObject(GameWorld world, Position position)
+        {
+            World = world;
+            Position = position;
+        }
+
         public abstract void Update();
 
         // Metod för att ett nytt objekt inte ska hamna på en upptagen position

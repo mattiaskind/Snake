@@ -9,18 +9,37 @@ namespace Snake
     internal class Maps
     {
         //        public List<Position> MapList = new List<Position>();
-        
+
+        public List<Position> WallList = new List<Position>();
 
         public void GetWallPositions()
         {
             // För varje rad, lägg till i MapList: index (x-koord), radnummer (y-koord)
+            
+            List<string[]> Map = new List<string[]>();
 
+            Map = Map1(Map); // Här ska man kunna slumpa eller välja karta med olika metoder MapN()
             
-            
+            for (int i = 0; i < Map.Count; i++)
+            {
+                //Console.WriteLine();
+                for (int j = 0; j < Map[i].Length; j++)
+                {
+                    //Console.Write("Y: " + i + ", X: " + j);
+
+                    if (Map[i][j] == "X")
+                    {
+                        //Console.Write(MapList[i][j]);
+                        WallList.Add(new Position(new int[] { j, i })); // Lägger till X, Y koordinater
+                    }
+                }
+            }
+
+
         }
 
 
-        public List<string[]> Map1()
+        public List<string[]> Map1(List<string[]> Map)
         {
             // Map 1 for testing
             string[] row01 = { " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " " };
@@ -46,15 +65,15 @@ namespace Snake
 
             List<string[]> MapList = new List<string[]> { row01, row02, row03, row04, row05, row06, row07, row08, row09, row10, row11, row12, row13, row14, row15, row16, row17, row18, row19, row20 };
 
-            return MapList;
+            return MapList; // Returnerar lista så att man mha liknande loop som nedan ska kunna plocka ut positioner
 
             /* Skriver ut innehållet i MapList
               foreach (string[] row in MapList)
             {
-                Console.WriteLine();
+                Console.WriteLine(); // Ny rad för varje rad i MapList
                 foreach (string rowContent in row)
                 {
-                    Console.Write(rowContent);
+                    Console.Write(rowContent); // Skriver ut innehållet i raden rowNN
                 }
             } */
         }

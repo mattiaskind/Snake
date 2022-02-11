@@ -8,7 +8,7 @@ namespace Snake
 {
     internal class Wall : GameObject
     {
-        public Wall(GameWorld world) : base(world)
+        public Wall(GameWorld world, Position position) : base(world, position)
         {
             Appearance = '#';
         }
@@ -21,8 +21,7 @@ namespace Snake
 
         public override void Update()
         {
-            // get mapList from maps.cs
-            // Rita ut map
+           
         }
     }
 }

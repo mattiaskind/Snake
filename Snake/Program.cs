@@ -14,7 +14,8 @@ namespace Snake
 
     class Program
     {
-        static ConsoleKey ReadKeyIfExists() => Console.KeyAvailable ? Console.ReadKey(intercept: true).Key : ConsoleKey.NoName;       
+        static ConsoleKey ReadKeyIfExists() => Console.KeyAvailable ? Console.ReadKey(intercept: true).Key : ConsoleKey.NoName;
+        
 
         static void Loop()
         {
@@ -22,7 +23,17 @@ namespace Snake
             const int frameRate = 5;
             GameWorld world = new GameWorld();
             ConsoleRenderer renderer = new ConsoleRenderer(world);
-                        
+
+            // Skapar en ny karta och hämtar information om denna från Maps.cs
+            Maps map = new Maps();
+            map.GetWallPositions();            
+            
+            // För varje vägg i Maps.WallList, lägg till väggar med position från WallList
+            foreach (var wall in map.WallList)
+            { 
+                world.AddGameObject(new Wall(world, new Position(new int[] { wall.X, wall.Y })));
+            }
+
             // Skapar spelaren och lägger till till världen                    
             Player player = new Player(world, Direction.right);
             world.AddGameObject(player);
@@ -31,7 +42,7 @@ namespace Snake
             world.AddGameObject(new Enemy(world, player.Position));
             // Skapar två matbitar och lägger till världen            
             world.AddGameObject(new Food(world));
-            world.AddGameObject(new Food(world));            
+            world.AddGameObject(new Food(world));
 
             // Skriver ut rad med poäng i blå färg
             Console.BackgroundColor = ConsoleColor.Blue;
