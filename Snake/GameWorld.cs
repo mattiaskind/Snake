@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Diagnostics;
 
 namespace Snake
 {
@@ -45,16 +46,29 @@ namespace Snake
                             {
                                 // Hantera ny position
                                 Player player = GameObjects[i] as Player;
-                                var previousPosition = player.Body[0] - player.Body[1];
+                                var positionDifference = player.Body[0] - player.Body[1];
 
-                                // För spelarens skull måste man ta Direction med här och sätta en ny efter att ha flyttat
-                                // Annars så behålls Direction från innan kollision
-
-
+                                if (positionDifference.X == 1) // om åt höger
+                                {
+                                    player.Body[0].X = player.Body[1].X;
+                                    player.SetDirection(Direction.left);
+                                }
+                                else if (positionDifference.X == -1) // om åt vänster
+                                {
+                                    player.Body[0].X = player.Body[1].X;
+                                    player.SetDirection(Direction.right);
+                                }
+                                else if (positionDifference.Y == 1) // om nedåt
+                                {
+                                    player.Body[0].Y = player.Body[1].Y;
+                                    player.SetDirection(Direction.up);
+                                }
+                                else if (positionDifference.Y == -1) // om uppåt
+                                {
+                                    player.Body[0].Y = player.Body[1].Y;
+                                    player.SetDirection(Direction.down);
+                                }
                             }
-                                
-                            
-
                         }
 
                         if(GameObjects[j] is Food)
@@ -76,7 +90,30 @@ namespace Snake
                     {
                         if (GameObjects[j] is Wall)
                         {
-                            // Hantera ny position
+                            // Krock med vägg
+                            if (GameObjects[i].Position.X == GameObjects[j].Position.X && GameObjects[i].Position.Y == GameObjects[j].Position.Y)
+                            {
+                                // Hantera ny position
+                                Enemy enemy = GameObjects[i] as Enemy;
+                                var positionDifference = enemy.Position - enemy.PreviousPosition;
+
+                                if (positionDifference.X == 1) // om åt höger
+                                {
+                                    enemy.Position.X = enemy.PreviousPosition.X;
+                                }
+                                else if (positionDifference.X == -1) // om åt vänster
+                                {
+                                    enemy.Position.X = enemy.PreviousPosition.X;
+                                }
+                                else if (positionDifference.Y == 1) // om nedåt
+                                {
+                                    enemy.Position.Y = enemy.PreviousPosition.Y;
+                                }
+                                else if (positionDifference.Y == -1) // om uppåt
+                                {
+                                    enemy.Position.Y = enemy.PreviousPosition.Y;
+                                }
+                            }
                         }
 
                         if (GameObjects[j] is Player)

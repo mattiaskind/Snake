@@ -12,6 +12,7 @@ namespace Snake
     internal class Enemy : GameObject
     {
         private Position PlayerPosition;
+        public Position PreviousPosition = new Position(new int[] { 0, 0 });
 
         public Enemy(GameWorld world, Position playerPosition) : base(world)
         {
@@ -32,6 +33,9 @@ namespace Snake
         /// </summary>
         public override void Update()
         {
+            PreviousPosition.X = Position.X; 
+            PreviousPosition.Y = Position.Y;
+
             // Räknar ut skillanden i x- och y-led till spelaren
             int X = PlayerPosition.X - Position.X;
             int Y = PlayerPosition.Y - Position.Y;

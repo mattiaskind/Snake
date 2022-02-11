@@ -22,14 +22,10 @@ namespace Snake
             
             for (int i = 0; i < Map.Count; i++)
             {
-                //Console.WriteLine();
                 for (int j = 0; j < Map[i].Length; j++)
                 {
-                    //Console.Write("Y: " + i + ", X: " + j);
-
                     if (Map[i][j] == "X")
                     {
-                        //Console.Write(MapList[i][j]);
                         WallList.Add(new Position(new int[] { j, i })); // Lägger till X, Y koordinater
                     }
                 }
